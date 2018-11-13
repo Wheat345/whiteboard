@@ -1,0 +1,38 @@
+nodejs server/client app:
+
+sync text message on both server/client side.
+
+------------------------
+
+remove old version of nodejs
+
+#sudo apt-get purge nodejs
+#sudo apt-get autoremove
+
+install node js version 11 on ubuntu16.04
+
+https://tecadmin.net/install-latest-nodejs-npm-on-ubuntu/	
+
+upgrde nodejs
+
+#sudo npm install n -g
+#upgrade to latest stable version
+#sudo n stable
+
+install ws (nodejs provided websocket module)
+#sudo npm install --save ws
+
+create simple server, port 8080
+
+const WebSocket = require('ws');
+ 
+const wss = new WebSocket.Server({ port: 8080 });
+ 
+wss.on('connection', function connection(ws) {
+  ws.on('message', function incoming(message) {
+    console.log('received: %s', message);
+  });
+ 
+  ws.send('something');
+});
+
